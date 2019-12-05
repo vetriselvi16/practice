@@ -1,0 +1,84 @@
+<div class="row mx-auto">
+  <div class="col-lg-3 col-md-6"  *ngFor="let products of product">
+
+<div class="col top-buffer ">
+    <div class="Columns column-margin">     
+        <div class="card" >
+            <img class="card-img-top"
+                src="{{products.image}}"
+                alt="Card image cap">
+            <div class="card-body">   
+                    <div class="row">
+                            <h5 class="col">
+                                <label name="name" id="testname">{{products.name}}</label>
+                            </h5>
+                            <label name="price" class="float-right text-danger pr-3">{{products.ratePerQuantity |currency:'INR'}}</label>
+                        </div>
+                        <div class="card-subtitle text-muted">
+                            <span class="alert alert-warning veralign pt-1 pb-1">{{products.brand}}</span> 
+                            <img src="https://img.icons8.com/material/24/000000/natural-food--v1.png">
+                            <span
+                                class="float-right ml-auto"> Product Quantity: <span
+                                class="alert alert-warning mt-1 pt-1 pb-1" id="badge-free">{{products.quantityType}}</span>
+                            </span>
+
+                        </div>
+            <!--Dropdown primary-->
+            <div class="mt-2"></div>
+<div class="dropdown mr-6" *ngIf=!isAdmin>
+
+        <!--Trigger-->
+        <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Details</a>
+      
+        <!--Menu-->
+        <div class="dropdown-menu ">
+          <!-- <a class="dropdown-item" >Stock</a> -->
+          <a class="dropdown-item" >Aisle:{{products.aisle}}</a>
+          <a class="dropdown-item" >Shelf:{{products.shelf}}</a>
+          <a class="dropdown-item" >Manufacturing date:{{products.dateOfManufacture | date:'dd/MM/yyyy'}}</a>
+          <a class="dropdown-item" >Expiry date:{{products.dateOfExpiry | date:'dd/MM/yyyy'}}</a>
+        </div>
+      </div>
+
+      <div class="dropdown mr-6" *ngIf=isAdmin>
+
+            <!--Trigger-->
+            <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Details</a>
+          
+            <!--Menu-->
+            <div class="dropdown-menu ">
+              <!-- <a class="dropdown-item" >Stock</a> -->
+              <a class="dropdown-item" >Code:{{products.code}}</a>
+              <a class="dropdown-item" >Type:{{products.type}}</a>
+              <a class="dropdown-item" >Stock:{{products.stockCount}}</a>
+              <a class="dropdown-item" >AddDate:{{products.addDate  | date:'dd/MM/yyyy'}}</a>
+              <a class="dropdown-item" >Aisle:{{products.aisle}}</a>
+              <a class="dropdown-item" >Shelf:{{products.shelf}}</a>
+              <a class="dropdown-item" >Manufacturing date:{{products.dateOfManufacture | date:'dd/MM/yyyy'}}</a>
+              <a class="dropdown-item" >Expiry date:{{products.dateOfExpiry | date:'dd/MM/yyyy'}}</a>
+            </div>
+          </div>
+          <!-- <a *ngIf="isAdmin" class[routerLink]="['/edit-product',product.productCode]">Edit</a> -->
+
+           <div class="editButton" *ngIf=isAdmin>
+                <button [routerLink]="['/edit',products.code]" type="button" class="btn btn-success">
+                    <i class="material-icons other_icon"> edit </i> Edit
+                </button>
+            </div>
+            <div class="deleteButton" *ngIf=isAdmin>
+              <button type="button" class="btn btn-success" (click)="delete(products.code)">
+                  <i class="material-icons other_icon"> delete_forever </i> Delete
+              </button>
+            </div>
+
+      <!--/Dropdown primary-->
+            </div>
+        </div>
+        <div class="mt-6"></div>
+    </div>
+  </div>
+  
+</div>
+</div>

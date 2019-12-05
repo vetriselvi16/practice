@@ -1,0 +1,29 @@
+<!-- Jumbotron -->
+<div class="card card-image big-banner" alt="Card image">
+        <div class="text-white rgba-stylish-strong py-5 px-4">
+          <div class="py-5">
+            <!-- Content -->
+            <div class="row">
+            <h1 >Find Item</h1>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i
+                  class="material-icons icon-size">search</i></span>
+              </div>
+              <input type="search" class="form-control" name="search-bar"  placeholder="Search Item" (input)="search()" [(ngModel)]="searchKey" >
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <label for="Sort"></label>
+                <select class="form-control" [(ngModel)]="sortKey" (ngModelChange)="sortFunction()" id="SortBy">
+                    <option disabled selected value>Sort by</option>
+                    <option value="name">Name</option>
+                    <option value="stock">Availibity</option>
+                    <option value="price">Price</option>
+                </select>
+            </div>
+          </div>
+          </div>
+        </div>
+</div>
+<!-- Jumbotron -->
+<app-stock-info></app-stock-info>

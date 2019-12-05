@@ -1,0 +1,31 @@
+
+<div class="container">
+    <h1>
+        <label for="field-req">Pending Requests</label>
+    </h1>
+    <div *ngIf="!empty">
+        <div class="card mt-5">
+          <table class="table">
+            <tr *ngFor="let req of userList">
+              <td class="ml-5">{{req.userId}}</td>
+              <td><div class="row">
+                  <div class="ml-auto">
+                    <!-- <div class="text-secondary mr-1">{{foodItem.price | currency:'INR'}}</div> (click)="this.foodService.removeFromCart(foodItem.id)"-->
+                    <a class="nav-link delete-icon" (click)="this.response(req ,'A')">
+                      <i class="material-icons rate"><label for="done">done</label></i>  
+                    </a>
+                  </div>
+                  <div class="ml-auto">
+                      <a class="nav-link delete-icon" (click)="this.response(req , 'D')">
+                        <i class="material-icons rate"><label for="clear">clear</label></i>  
+                      </a>
+                  </div>
+                  </div>
+            </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+</div>
+

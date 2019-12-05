@@ -1,0 +1,50 @@
+
+
+<div class="page">
+<br><br><br><br><br>
+	
+		<div class=" card container login mx-auto">
+			<div class="card-body">
+				<h4 class="card-title">
+					<label for="field-signUp">Login</label>
+				</h4>
+
+				<div class="alert alert-danger ml-5 mr-5" *ngIf="authService.status2 ;else auth">Invalid Username / Password</div>
+				<ng-template #auth>
+					<div class="alert alert-info alert-dismissible fade show ml-5 mr-5" *ngIf="userId.touched && password.touched &&  this.authService.validCredentials && this.authService.status">Approval is in pending status</div>
+					<div class="alert alert-info ml-5 mr-5" *ngIf="userId.touched && password.touched && this.authService.validCredentials && !this.authService.status">Approval is in Denied</div> 
+				</ng-template>
+
+				<!-- <div class="alert alert-danger ml-5 mr-5" *ngIf="userId.touched && password.touched && !this.authService.validCredentials">Invalid Username / Password</div>
+				<div class="alert alert-danger ml-5 mr-5" *ngIf="this.authService.status1">Approval is in pending status</div>
+				<div class="alert alert-danger ml-5 mr-5" *ngIf="this.authService.status2">Approval is in Denied</div> -->
+				
+				<form [formGroup]="loginForm" (submit)="authService.authenticateUser(loginForm.value)">
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<label for="inputName1">UserId</label> 
+							<input type="text" class="form-control" id="userId" formControlName="userId" placeholder="Enter UserId">
+							<div class="text-danger" *ngIf="userId.touched && userId.invalid && userId.errors.required">UserId is required</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-lg-12">
+							<label for="inputPassword2">Password</label> 
+							<input type="password" class="form-control" placeholder="Enter Password" formControlName="password" id="password">
+							<div class="text-danger" *ngIf="password.touched && password.invalid && password.errors.required">Password is required</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-lg-6 col-md-6 col-sm-6">
+							<button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-6">
+							<div class="text-secondary login_signup">
+								New here?<a (click)="toSignup()" class="text-primary" >SignUp</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+        </div>
+	</div>

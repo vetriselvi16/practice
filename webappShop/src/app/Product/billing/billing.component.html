@@ -1,0 +1,174 @@
+
+
+<div class="container-fluid">
+  <h1>
+    <label for="field-req">Billing Product</label>
+  </h1>
+
+  <div class ="row">
+    <div class="col-lg-3 col-md-3 ">
+      <label for="Sort">Type</label>
+      <select class="form-control" [(ngModel)]="filterKey" (ngModelChange)="filterFunction()" id="SortBy">
+          <option disabled selected value>Filter By</option>
+          <option value = 1>Fruits & Veg</option>
+          <option value = 2>Stationary</option>
+          <option value=3>general grocery</option>
+          <option value=4>Dairy</option>
+      </select>
+    </div>
+    <div class="col-lg-3 col-md-3 ">
+      <label for="Sort">Code</label>
+      <input type="search" class="form-control" name="search-bar"  placeholder="code" (input)="codeSearch()" [(ngModel)]="codeKey" >
+    </div>
+  </div>
+
+  <form [formGroup]="form">
+  
+    <div class ="row">
+  
+   <div class="col-lg-3 col-md-3 ">
+      <label for="contactNumber">Contact Number</label>
+      <input type="number" id="contactNumber" class="form-control" name="number" formControlName="contactNumber"  placeholder="Number" >
+      <div class="text-danger" *ngIf="contactNumber.invalid && contactNumber.errors.required && contactNumber.touched">Contact number required</div>
+      <div *ngIf="contactNumber.errors">
+              <div class="text-danger" *ngIf="contactNumber.errors.maxlength && contactNumber.errors.minLength">Contact Number should be 10 characters</div>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-3 ">
+    <label for="Sort"><b>Total</b></label><div class="mt-0"></div>
+    {{this.totalAmount}}
+</div>
+  <div class="col-lg-4 col-md-4 ">
+     
+      <input type="submit" class="btn btn-success mt-3" value="Generate Bill" (click)="submit()" [disabled]="!form.valid"> 
+  </div>
+  
+</div>
+  
+  <div class="row mx-auto">
+    <div class="col-lg-3 col-md-6"  *ngFor="let products of product">
+  
+  <div class="col top-buffer ">
+      <div class="Columns column-margin">     
+          <div class="card" >
+              <img class="card-img-top"
+                  src="{{products.image}}"
+                  alt="Card image cap">
+              <div class="card-body">   
+                      <div class="row">
+                              <h5 class="col">
+                                  <label name="name" id="testname">{{products.name}}</label>
+                              </h5>
+                              <label name="price" class="float-right text-danger pr-3">{{products.ratePerQuantity |currency:'INR'}}</label>
+                          </div>
+                          <div class="card-subtitle text-muted">
+                              <span class="alert alert-warning veralign pt-1 pb-1">{{products.brand}}</span> 
+                              <img src="https://img.icons8.com/material/24/000000/natural-food--v1.png">
+  
+                          </div>
+              
+              <div class="mt-2"></div>
+
+              <div class="bill">
+                <button type="button" class="btn btn-success" (click)="this.bill(products.code,products.ratePerQuantity)" [disabled]="!quantity.valid">
+                    <i class="material-icons other_icon"> receipt </i><label for="bill"> Add To Bill </label>
+                </button>
+              </div>
+
+              <div class="quantity" >
+                <span class="float-right ml-auto"> Product Quantity: 
+                  <input type="number" class="form-control" name="quantity"  placeholder="quantity" formControlName="quantity" id="bill" >
+                  
+                </span>
+              </div>
+              
+  
+        
+              </div>
+          </div>
+          <div class="mt-6"></div>
+      </div>
+    </div>
+    
+  </div>
+  </div> 
+</form>
+ 
+  
+
+    
+</div>
+    
+
+
+     <!-- <div class="row mt-4  ml-5 ">
+      <div class="col-4 mr-5">
+              <label for="type">Product Type</label> 
+              <input class="my-0 py-1 icon" type="number" [(ngModel)]="searchTypeKey" (input)="searchByType()"
+              placeholder="Search by type">
+      </div>
+      <div class="col-4">
+              <label for="code">Product Code</label> 
+              <input class="my-0 py-1 icon" type="text" [(ngModel)]="searchCodeKey" (input)="searchByCode()"
+              placeholder="Search by code">
+      </div>
+  </div>
+  
+  <form [formGroup]="form">
+  <div class="row ml-5 mt-3">
+          <div class="col-3 mr-5">
+                  <label for="contactNumber">Contact Number</label> 
+                  <input type="text" id="contactNumber" formControlName="contactNumber"> 
+                  <div class="text-danger" *ngIf="contactNumber.invalid && contactNumber.errors.required && contactNumber.touched">Contact number required</div>
+                  <div *ngIf="contactNumber.errors">
+                          <div class="text-danger" *ngIf="contactNumber.errors.maxlength && contactNumber.errors.minLength">Contact Number should be 10 characters</div>
+                  </div>
+          </div>
+          <div class="col-3 ml-5">
+                  <label for="total">Total amount: {{totalAmount}}</label> 
+          </div>     
+          <div class="col-3 ml-5 mt-4">
+                  <button type="submit" class="btn signup-btn" (click)="generate()">Generate Bill</button>
+          </div>      
+  </div>
+  
+  <div class="row ml-5 mt-3">
+      <div class="col-6" *ngIf="isBill">Bill generated succesfully!!</div>
+      <div class="col-6" *ngIf="isItem1">Item added succesfully!!</div>
+  </div>
+  
+  <div class="row mb-5">
+      <div class="col-4" *ngFor="let products of products" >
+          <div class="card ml-3 mt-5 mr-3 card1" >
+               <img class="card-img-top" src={{products.image}}>
+              <div class="card-body">
+                  <div class="row">
+                       <div class="col">
+                           <h4 class="card-title">{{products.name}}</h4>
+                       </div>        
+                       <div class="ml-auto mt-1">{{products.ratePerQuantity|currency:'INR'}}</div>   
+                  </div>
+                  <div class="row">
+                          <div class="col">
+                              <div class="ml-auto mt-1">Type: {{products.type}}</div>
+                          </div>        
+                          <div class="ml-auto mt-1">Code: {{products.code}}</div>   
+                     </div>
+  
+                  <div class="row mt-2">
+                      <div class="col">
+                          <label for="quantity">Quantity</label>
+                          <input type="number" id="quantity" formControlName="quantity">
+                      </div>
+                      <div class="row mt-2 ml-5">
+                              <div class="col">
+                                  <button type="submit" class="btn signup-btn" (click)="submit(products.code,products.ratePerQuantity)">Add to Bill</button>
+                              </div>                  
+                       </div>
+              </div>
+          </div>
+       </div>
+  </div>
+  </div>
+  </form> -->
+  

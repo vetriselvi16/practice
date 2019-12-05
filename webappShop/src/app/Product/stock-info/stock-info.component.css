@@ -1,0 +1,107 @@
+.dropdown
+{
+    text-align:center;
+}
+.btn-success
+{
+	background-color:#157D71;
+}
+.container-fluid
+{
+	padding-left:0px;
+	padding-right:0px;
+}
+ul.navbar-nav li a, ul.navbar-nav li a:visited{
+    color: #ffffff !important;
+}
+
+.navbar
+{
+	background-color: #157D71! important;
+	color: #ffffff;
+	width:100%;
+}
+.price
+{
+	float:right;
+	font:30px;
+}
+.footer 
+{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #157D71;
+  color: #ffffff;
+  text-align: left;
+}
+
+.editButton,.login_signup
+{
+	float:right;
+}
+.deleteButton
+{
+	float:left;
+}
+.login
+{
+	width: 25rem;
+}
+.shipping
+{
+	color:#0000ff;
+	float:right;
+}
+.delete
+{
+	color:#c0c0c0;
+}
+.material-icons 
+{
+   	vertical-align: middle;
+}
+.person
+{
+	padding-top:9px;
+}
+
+.top-buffer 
+{ 
+	margin-top:20px; 
+}
+.first-img
+{
+	width:100%;
+	height:50%;
+}
+.rate 
+{
+	float:right;
+}
+.link
+{
+	color:#800000! important;	
+}
+.row
+{
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:15px;
+}
+.new
+{
+	padding-top:20px;
+}
+.signup
+{
+	text-decoration:none;
+}
+@media (max-width: 991px) {
+  .column-margin {
+    margin: 3px 0;
+  }
+}
+
+

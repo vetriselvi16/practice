@@ -1,0 +1,112 @@
+
+
+<div class="container-fluid mt-3">
+        <h1>Edit Product</h1>
+        <!-- <div *ngIf="flag"> -->
+          <form [formGroup]="productForm" (submit)="onSubmit()">
+            <div class="row">
+              <div class="col-lg-3 mt-5">
+                <label for="productCode">Product Code</label>
+                <input type="text" class="form-control" id="productCode" formControlName="code">
+                <div class="text-danger" *ngIf="code.errors?.maxlength || code.errors?.minlength"> Product Code
+                  must
+                  be between 2 to 50 characters long</div>
+                <div class="text-danger" *ngIf="code.invalid && code.errors.required"> Product Code is required
+                </div>
+              </div> 
+              <div class="col-lg-3 mt-5">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" formControlName="name">
+                <div class="text-danger" *ngIf="name.errors?.maxlength || name.errors?.minlength"> Product Name
+                  must
+                  be between 2 to 50 characters long</div>
+                <div class="text-danger" *ngIf="name.invalid && name.errors.required"> Product Name is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="productType">Product Type</label>
+                <input type="number" class="form-control" id="type" formControlName="type">
+                <div class="text-danger" *ngIf="type.invalid && type.errors.required"> Product Code is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="brand">Brand</label>
+                <input type="text" class="form-control" id="brand" formControlName="brand">
+                <div class="text-danger" *ngIf="brand.errors?.maxlength || brand.errors?.minlength"> Brand
+                  must
+                  be between 2 to 50 characters long</div>
+                <div class="text-danger" *ngIf="brand.invalid && brand.errors.required"> Brand is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                    <label for="quantityType">Quantity Type</label>
+                    <input type="number" class="form-control" id="quantityType" formControlName="quantityType">
+                    <div class="text-danger" *ngIf="quantityType.invalid && quantityType.errors.required"> Quantity Type is required
+                    </div>
+                </div>
+              <div class="col-lg-3 mt-5">
+                <label for="ratePerQuantity">Rate per Quantity</label>
+                <input type="number" class="form-control" id="ratePerQuantity" formControlName="ratePerQuantity">
+                <div class="text-danger" *ngIf="ratePerQuantity.invalid && ratePerQuantity.errors.required"> Rate per Quantity
+                  is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="stockCount">Stock Count</label>
+                <input type="number" class="form-control" id="stockCount" formControlName="stockCount">
+                <div class="text-danger" *ngIf="stockCount.invalid && stockCount.errors.required"> Stock Count is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="addDate">Add Date</label>
+                <input type="date" class="form-control" id="addDate" formControlName="addDate">
+                <div class="text-danger" *ngIf="addDate.invalid && addDate.errors.required"> Add Date is
+                  required</div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="aisle">Aisle</label>
+                <input type="text" class="form-control" id="aisle" formControlName="aisle">
+                <div class="text-danger" *ngIf="aisle.errors?.maxlength || aisle.errors?.minlength"> Aisle
+                  must
+                  be between 1 to 15 characters long</div>
+                <div class="text-danger" *ngIf="aisle.invalid && aisle.errors.required"> Aisle is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="shelf">Shelf</label>
+                <input type="text" class="form-control" id="shelf" formControlName="shelf">
+                <div class="text-danger" *ngIf="shelf.errors?.maxlength || shelf.errors?.minlength"> Shelf
+                  must
+                  be between 1 to 15 characters long</div>
+                <div class="text-danger" *ngIf="shelf.invalid && shelf.errors.required"> Shelf is required
+                </div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="dateOfManufacture">Date of Manufacture</label>
+                <input type="date" class="form-control" id="dateOfManufacture" formControlName="dateOfManufacture">
+                <div class="text-danger" *ngIf="dateOfManufacture.invalid && dateOfManufacture.errors.required"> Date of
+                  Manufacture is
+                  required</div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="dateOfExpiry">Date of Expiry</label>
+                <input type="date" class="form-control" id="dateOfExpiry" formControlName="dateOfExpiry">
+                <div class="text-danger" *ngIf="dateOfExpiry.invalid && dateOfExpiry.errors.required"> Date of Expiry is
+                  required</div>
+              </div>
+              <div class="col-lg-3 mt-5">
+                <label for="productImage">Product Picture URL</label>
+                <input type="url" class="form-control" id="productImage" formControlName="image">
+                <div class="text-danger" *ngIf="image.invalid && image.errors.required"> Image URL is required
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="btn btn-danger mt-3" value="Save" [disabled]="!productForm.valid">
+          </form>
+        
+        <!-- <div *ngIf="!flag" class="alert alert-success">
+          Product details saved successfully
+        </div> -->
+      </div>
+      <div class="mt-5"></div>
+      
